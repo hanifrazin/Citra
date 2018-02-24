@@ -14,10 +14,11 @@ else
    %% Read image
    X = fullfile(pathname,filename);
    Img = imread(X);
+   figure,imshow(X),title('Gambar ori');
    
    %% Gray image
    abu = grayImage(Img);
-   biner = binerImage(abu,180,'threshold');
-   figure,imshow(biner)
-   
+   h=imhist(abu);figure,plot(h);axis([0 255 0 500]);
+   biner = binerImage(abu,150);
+      
 end

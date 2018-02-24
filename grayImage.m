@@ -18,5 +18,7 @@ function [GrayImg] = grayImage(Img,ket)
     elseif isequal(ket,'langsung')
         GrayImg = rgb2gray(Img);
     end
+    
+    figure,imshow(GrayImg),title('Gambar Grayscale');
 end
 
