@@ -17,5 +17,7 @@ else
    
    %% Gray image
    abu = grayImage(Img);
+   biner = binerImage(abu,180,'threshold');
+   figure,imshow(biner)
    
 end
