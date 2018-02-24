@@ -14,17 +14,26 @@ else
    %% Read image
    X = fullfile(pathname,filename);
    Img = imread(X);
-   figure,imshow(X),title('Gambar ori');
+   figure,imshow(X),title('Gambar original');
    
    %% Gray image
    abu = grayImage(Img);
-   sharp = imsharpen(abu);
-   filter2 = imfilter(sharp,fspecial('laplacian'));
+   gauss = fspecial('gaussian',[5 5],0.5);
+   smooth = imfilter(abu,gauss,'replicate');
+   figure,imshowpair(abu,smooth,'montage');
+   prewitt = uint8(DeteksiTepi(smooth,'prewitt'));
+   figure,imshow(prewitt);
+%    filter = imfilter(abu,fspecial('gaussian'));
+%    filter2 = imfilter(abu,fspecial('log'));
+%    tepi = edge(filter,'log');
+%    tepi2 = edge(filter2,'prewitt');
+%    figure,imshowpair(tepi,filter2,'montage');
    %% Crop and Resize Image
-   cropImg = imcrop(filter2);
-   figure,imshow(cropImg),title('Filter');
+%    cropImg = imcrop(filter);
+%    figure,imshow(cropImg),title('Filter');
+
    %% Sharp Image
-   Gablok=[90.5 108.5 94 148]
+   Gablok=[97.5 108.5 94 148]
    Potong=[97.5 96.5 84 160]
 %    biner2 = threshBiner(cropImg,180);
    
