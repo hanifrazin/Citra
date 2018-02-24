@@ -13,7 +13,7 @@ function [biner] = threshBiner(Img,thresh)
         end
     end
 
-    biner = not(biner);
+%     biner = not(biner);
     figure,imshow(biner),title('Gambar Biner');
 end
 

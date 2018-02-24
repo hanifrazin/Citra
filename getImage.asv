@@ -18,14 +18,8 @@ else
    
    %% Gray image
    abu = grayImage(Img);
+   h=imhist(abu);figure,plot(h);axis([0 255 0 500]);
    sharp = imsharpen(abu);
-   filter2 = imfilter(sharp,fspecial('laplacian'));
-   %% Crop and Resize Image
-   cropImg = imcrop(filter2);
-   figure,imshow(cropImg),title('Filter');
-   %% Sharp Image
-   Gablok=[90.5 108.5 94 148]
-   Potong=[97.5 96.5 84 160]
-%    biner2 = threshBiner(cropImg,180);
-   
+   biner2 = threshBiner(abu,175);
+   figure,imshowpair(biner2,biner,'montage');
 end
