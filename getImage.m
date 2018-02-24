@@ -4,7 +4,8 @@ clear all;
 close all;
 
 %% Get Image
-[filename, pathname] = uigetfile({'*.jpg';'*.png';'.tif';'.tiff';'.gif'},'Pilih Gambar');
+StartDirectory = 'C:\Users\HANIF\Pictures';
+[filename, pathname] = uigetfile({'*.jpg';'*.png';'.tif';'.tiff';'.gif'},'Pilih Gambar',StartDirectory);
 if isequal(filename,0)
    disp('User selected Cancel')
 else
@@ -13,5 +14,8 @@ else
    %% Read image
    X = fullfile(pathname,filename);
    Img = imread(X);
+   
+   %% Gray image
+   abu = grayImage(Img);
    
 end
