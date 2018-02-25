@@ -1,11 +1,11 @@
-function [biner] = threshBiner(Img,thresh)
+function [biner] = threshBiner(Gray_Img,thresh)
 %BINERIMAGE Summary of this function goes here
 %   Detailed explanation goes here
-    [tinggi,lebar] = size(Img);
+    [tinggi,lebar] = size(Gray_Img);
     biner = zeros(tinggi,lebar);
     for baris=1:tinggi
         for kolom=1:lebar
-            if Img(baris,kolom)>=thresh
+            if Gray_Img(baris,kolom)>=thresh
                 biner(baris,kolom) = 1;
             else
                 biner(baris,kolom) = 0;
@@ -14,6 +14,6 @@ function [biner] = threshBiner(Img,thresh)
     end
 
 %     biner = not(biner);
-    figure,imshow(biner),title('Gambar Biner');
+    figure,imshow(1-biner),title('Gambar Biner');
 end
 

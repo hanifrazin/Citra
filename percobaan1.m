@@ -14,25 +14,26 @@ else
    %% Read image
    X = fullfile(pathname,filename);
    Img = imread(X);
-   figure,imshow(X),title('Gambar original');
    
-   %% Gray image
-   abu = grayImage(Img);
-   sharp = imsharpen(abu);
+   %% Gray and filter
+   GrayImg = rgb2gray(Img);
+   SharpImg = imsharpen(GrayImg);
    
-   %% Crop
-   crop = imcrop(sharp,[107.5 72.5 173 116]);
+   %% Crop 
+   CropImg = imcrop(SharpImg,[115.5 45.5 155 155]);
    
-   %% Resize Image
-   reImg = imresize(crop,[150 150]);
-   
-   %% Binary image
-   t = threshIterative(reImg);
-   biner = threshBiner(reImg,t);
+   %% Biner
+   level = graythresh(CropImg);
+   BwImage = im2bw(CropImg,level);
+   inversBw = not(BwImage);
    
    %% Morfologi 
    
    
+   %% Display image
+   figure,
+   subplot(1,2,1),imshow(GrayImg),title('Citra Grayscale');
+   subplot(1,2,2),imshow(CropImg),title('Citra Sharp');
    
    
 end
