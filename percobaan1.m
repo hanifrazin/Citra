@@ -29,9 +29,11 @@ else
 
    %% Morfologi
    SE1 = strel('line',3,45);
-   SE2 = strel('square',4)
+   SE2 = strel('square',4);
+   
    opening = imopen(InversBw,SE1);
    closing = imclose(opening,SE2);
+  
    figure,imshowpair(opening,closing,'montage');
    
    %% Ekstraksi
