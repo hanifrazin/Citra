@@ -28,14 +28,12 @@ else
    InversBw = imcomplement(BwImg);
 
    %% Morfologi
-   SE1 = strel('line',3,45);
-   SE2 = strel('square',4)
-   opening = imopen(InversBw,SE1);
-   closing = imclose(opening,SE2);
+%    SE = strel('line',3,45);
+   SE = strel('square',5)
+   opening = imopen(InversBw,SE);
+   closing = imclose(InversBw,SE);
    figure,imshowpair(opening,closing,'montage');
-   
-   %% Ekstraksi
-   
+
    %% Display image
 %    figure,
 %    subplot(1,2,1),imshow(CropImg),title('Citra Grayscale');
