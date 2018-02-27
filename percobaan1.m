@@ -32,11 +32,15 @@ else
    SE2 = strel('square',4);
    
    opening = imopen(InversBw,SE1);
+   opening2 = imdilate(imerode(InversBw,SE1),SE1);
    closing = imclose(opening,SE2);
+   closing2 = imerode(imdilate(opening2,SE2),SE2);
   
+   figure,imshowpair(InversBw,opening,'montage');
    figure,imshowpair(opening,closing,'montage');
-   
+
    %% Ekstraksi
+   
    
    %% Display image
 %    figure,
