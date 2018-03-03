@@ -35,7 +35,7 @@ else
    closing = imclose(opening,SE2);
   
 %    figure,imshowpair(InversBw,opening,'montage');
-   figure,imshowpair(GrayImg,SharpImg,'montage');
+
    figure,imshowpair(opening,closing,'montage');
 
    %% Ekstraksi
