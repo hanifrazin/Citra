@@ -36,16 +36,19 @@ else
    closing = imclose(opening,SE2);
    
    %% Ekstraksi
-   B = bwboundaries(closing,8); % find the boundaries of all objects
-
-   CC = cell(1, length(B)); % pre-allocate
-     
-   for k = 1:length(B)
-        CC{k} = chaincode2(B{k}); % chain code for the k'th object
+   boundary = bwboundaries(closing,8,'noholes'); % find the boundaries of all objects
+   b = boundary{1,1};
+   b(end,:) = [];
+   cc = chaincode2(b);
+   cc2 = koderantai(b);
+   row = size(cc,1);
+   fprintf('Chain Code : ');
+   for i=1:row
+       fprintf('%d',cc.code);
+       fprintf('\n');
+       fprintf('%d',cc2);
    end
-%    [kodeRantai tabel tepi] = ChainCode(morf);
-%    imshow(tepi)
-%    EdgeBw = edge(thick,'roberts');
+   fprintf('\n');
    figure,imshowpair(opening,closing,'montage');
 
 end
